@@ -29,4 +29,44 @@ public class Movement : MonoBehaviour
         }
         animator.SetBool("IsWalk", move != 0);
     }
+    private void OnTriggerEnter(Collider other)
+    {   
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "HouseDoor")
+        {
+            
+        }
+        else if (other.gameObject.name == "mainFoot")
+        {
+
+        }
+        else if (other.gameObject.name == "PoliceStt")
+        {
+
+        }
+        else if (other.gameObject.name == "CCTV")
+        {
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {   
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "HouseDoor")
+        {
+            
+        }
+        else if (other.gameObject.name == "mainFoot")
+        {
+
+        }
+        else if (other.gameObject.name == "PoliceStt")
+        {
+
+        }
+        else if (other.gameObject.name == "CCTV")
+        {
+
+        }
+    }
 }
