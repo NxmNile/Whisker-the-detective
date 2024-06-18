@@ -15,6 +15,7 @@ public class CluesInvestigate : MonoBehaviour
     [SerializeField] private TMP_Text descriptionTxt;
     [SerializeField] private Image descriptionImage;
     [SerializeField] private Sprite[] images;
+    [SerializeField] private GameObject[] cluesImage;
     private bool isInObjectCollider;
     private string gameObjectName;
     void Update()
@@ -46,6 +47,9 @@ public class CluesInvestigate : MonoBehaviour
                 Time.timeScale = 0;
             }
             //--------------------------------------
+            //----------Owl House-------------------
+            
+            ///////////////////////////////////////
         }
     }
 
