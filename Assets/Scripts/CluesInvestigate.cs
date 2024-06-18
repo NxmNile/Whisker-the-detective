@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor.SceneManagement;
+using UnityEditorInternal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,13 +16,30 @@ public class CluesInvestigate : MonoBehaviour
     [SerializeField] private TMP_Text guilde;
     [SerializeField] private TMP_Text descriptionTxt;
     [SerializeField] private Image descriptionImage;
+    [SerializeField] private GameObject DesImage;
     [SerializeField] private Sprite[] images;
     [SerializeField] private GameObject[] cluesImage;
     [SerializeField] private GameObject[] Guides;
+    private KeepData _keepData;
     private int i = 0;
     private int y = 0;
     private bool isInObjectCollider;
     private string gameObjectName;
+
+    private void Start()
+    {   
+        _keepData = KeepData.Instance;
+        if (_keepData != null)
+        {
+            Debug.Log(_keepData.sceneName);
+        }
+        else
+        {
+            Debug.LogError("KeepData is not assigned. Please assign it in the inspector.");
+        }
+    }
+
+
     void Update()
     {
         if (isInObjectCollider&&Input.GetKeyDown(KeyCode.F))
@@ -31,32 +49,47 @@ public class CluesInvestigate : MonoBehaviour
             {
                 investigateUI.SetActive(false);
             }
-            if (Guides!=null)
+            if (_keepData.sceneName=="OwlHouse")
             {
                 Guides[i].SetActive(false);
             }
             if (gameObjectName == "HouseDoor")
-            {   
+            {
+                _keepData.sceneName = "OwlHouse";
                 SceneManager.LoadScene("OwlHouse");
             }
             else if (gameObjectName == "PoliceStt")
             {
-                // Add unlock here
-                SceneManager.LoadScene("PoliceStation");
+                if (_keepData.CheckAllClues())
+                {
+                    SceneManager.LoadScene("PoliceStation"); //unlock
+                }
+                else
+                {
+                    DescriptionUI.SetActive(true);
+                    DesImage.SetActive(false);
+                    descriptionTxt.text = "There are clues left. Please go back and investigate more.";
+                    Time.timeScale = 0;
+                }
+                
             }
             else if(gameObjectName == "mainFoot")
             {   
                 DescriptionUI.SetActive(true);
+                DesImage.SetActive(true);
                 descriptionTxt.text = "Muddy footprints near the shattered window match Maxie Badger's footprint";
                 descriptionImage.sprite = images[0];//change number
                 Time.timeScale = 0;
+                _keepData.CluesList[0] = true;
             }
             else if (gameObjectName == "CCTV")
             {
                 DescriptionUI.SetActive(true);
+                DesImage.SetActive(true);
                 descriptionTxt.text = "Security Camera Footage: Showing Bunny Alice entering the house late at night";
                 descriptionImage.sprite = images[1];//change number
                 Time.timeScale = 0;
+                _keepData.CluesList[1] = true;
             }
             //--------------------------------------
             //----------Owl House-------------------
@@ -65,6 +98,7 @@ public class CluesInvestigate : MonoBehaviour
                 DescriptionUI.SetActive(true);
                 descriptionTxt.text = "A shattered window suggesting a possible break-in.";
                 Time.timeScale = 0;
+                _keepData.CluesList[2] = true;
             }
             else if(gameObjectName=="letter")
             {
@@ -74,6 +108,7 @@ public class CluesInvestigate : MonoBehaviour
                 y = 4;
                 descriptionTxt.text = "A threatening letter addressed to Dr. Hootie found in the room's fireplace, partially burned.";
                 Time.timeScale = 0;
+                _keepData.CluesList[3] = true;
             }
             else if (gameObjectName == "WEAPON")
             {
@@ -84,6 +119,7 @@ public class CluesInvestigate : MonoBehaviour
                 descriptionTxt.text =
                     "The murder weapon: An ancient artifact (a ceremonial dagger) from Dr. Hootie's collection, found wiped clean of fingerprints.";
                 Time.timeScale = 0;
+                _keepData.CluesList[4] = true;
             }
             else if (gameObjectName == "phone")
             {   
@@ -94,6 +130,7 @@ public class CluesInvestigate : MonoBehaviour
                 descriptionTxt.text =
                     "Phone Records: Reveal multiple calls between Dr. Hootie and an unknown number, traced back to a burner phone found in Maxie's possession.";
                 Time.timeScale = 0;
+                _keepData.CluesList[5] = true;
             }
             else if (gameObjectName == "diary")
             {   
@@ -103,6 +140,7 @@ public class CluesInvestigate : MonoBehaviour
                 y = 0;
                 descriptionTxt.text = "The Diary: The missing pages from the diary reveal Dr. Hootie was about to expose a significant fraud involving her husband and Maxie Badger.";
                 Time.timeScale = 0;
+                _keepData.CluesList[6] = true;
             }
             else if(gameObjectName=="bankRecord")
             {   
@@ -113,12 +151,18 @@ public class CluesInvestigate : MonoBehaviour
                 descriptionTxt.text =
                     "Bank Records: Indicate Hawkin Owl withdrew a large sum of money shortly before Dr. Hootie's death.";
                 Time.timeScale = 0;
+                _keepData.CluesList[7] = true;
             }
             else if (gameObjectName=="Door")
             {
+                _keepData.sceneName = "WorldMain";
                 SceneManager.LoadScene("World 1");
             }
             ///////////////////////////////////////
+            else
+            {
+                
+            }
             isInObjectCollider = false;
         }
     }
@@ -189,11 +233,15 @@ public class CluesInvestigate : MonoBehaviour
             investigateUI.SetActive(false);
         }
 
-        if (Guides !=null)
+        if (_keepData.sceneName=="OwlHouse")
         {
             Guides[i].SetActive(false);
         }
-        Debug.Log(other.gameObject.name);
+        else
+        {
+            
+        }
+        //Debug.Log(other.gameObject.name);
     }
 
     public void closeDescription()
@@ -205,7 +253,7 @@ public class CluesInvestigate : MonoBehaviour
             BGPanel.SetActive(false);
         }
 
-        if (cluesImage!=null)
+        if (_keepData.sceneName=="OwlHouse")
         {
             cluesImage[y].SetActive(false);
         }
