@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OwlHouse.unity
     guid: 53dded08914f9b049bfe51bbba17f569
   - enabled: 1
-    path: Assets/Scenes/World.unity
-    guid: 77a15519ac990ee429ee485fb44883d5
-  - enabled: 1
     path: Assets/Scenes/PoliceStation.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/World 1.unity
+    guid: 55596191b026efc468b348cf0116ac9f
   m_configObjects: {}
