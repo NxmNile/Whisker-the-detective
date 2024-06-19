@@ -608,7 +608,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 15.73, z: -13.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1135973981}
   m_Father: {fileID: 1955185691}
   m_LocalEulerAnglesHint: {x: 39.505, y: 0, z: 0}
 --- !u!114 &330585547
@@ -791,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dabe1e3ee2d8f347a7ccc5f398afa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 13
+  moveSpeed: 15
   initialSpeed: 0
   IsTalking: 0
 --- !u!136 &352630881
@@ -883,6 +884,35 @@ MonoBehaviour:
   - {fileID: 108261505}
   cameraController: {fileID: 352630885}
   playerController: {fileID: 352630880}
+  index: 0
+  objectName: 
+--- !u!4 &352630888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 39c7c2a5b4bc1734aa606a9709850a81,
+    type: 3}
+  m_PrefabInstance: {fileID: 356535235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &352630889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352630879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741b68a465a3ce94fbd7be825ff0e69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform:
+  - {fileID: 1559297210}
+  - {fileID: 886839611}
+  - {fileID: 1175402180}
+  - {fileID: 974806058}
+  - {fileID: 588637981}
+  playerController: {fileID: 352630880}
+  rotationSpeed: 5
+  interrogation: {fileID: 352630886}
 --- !u!1001 &356535235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,6 +1006,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 352630886}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 39c7c2a5b4bc1734aa606a9709850a81,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 352630889}
   m_SourcePrefab: {fileID: 100100000, guid: 39c7c2a5b4bc1734aa606a9709850a81, type: 3}
 --- !u!4 &374245813 stripped
 Transform:
@@ -1125,7 +1159,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2165be15df33bef4ca27f7fa6101b537,
         type: 3}
       propertyPath: m_Name
-      value: badger
+      value: BadgerDesk
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 2165be15df33bef4ca27f7fa6101b537,
         type: 3}
@@ -1350,6 +1384,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startIdleTime: 1.3
+  playerController: {fileID: 352630880}
+  rotationSpeed: 5
+  interrogation: {fileID: 352630886}
+  targetTransform: {fileID: 352630888}
 --- !u!136 &588637976
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1394,6 +1432,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5, y: 4.23, z: 6.56}
   m_Center: {x: 0, y: 2.12, z: 0.18}
+--- !u!4 &588637981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd5c1089b30f8dc4e98bcb4c24ffbad9,
+    type: 3}
+  m_PrefabInstance: {fileID: 588637969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &653521507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,6 +1723,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startIdleTime: 0.2
+  playerController: {fileID: 352630880}
+  rotationSpeed: 5
+  interrogation: {fileID: 352630886}
+  targetTransform: {fileID: 352630888}
+--- !u!4 &886839611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c84bf8a6122b81241b07eb697b6d3156,
+    type: 3}
+  m_PrefabInstance: {fileID: 1917584394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901288024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +2036,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startIdleTime: 1.2
+  playerController: {fileID: 352630880}
+  rotationSpeed: 5
+  interrogation: {fileID: 352630886}
+  targetTransform: {fileID: 352630888}
+--- !u!4 &974806058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2165be15df33bef4ca27f7fa6101b537,
+    type: 3}
+  m_PrefabInstance: {fileID: 470094453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &985480325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2320,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1db2910df73b314e98f0eb45256bba2,
         type: 3}
       propertyPath: m_Name
-      value: Rabbit
+      value: RabbitDesk
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e1db2910df73b314e98f0eb45256bba2,
         type: 3}
@@ -2637,7 +2701,7 @@ RectTransform:
   - {fileID: 1570595311}
   - {fileID: 1844631958}
   - {fileID: 108261506}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 330585546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2703,6 +2767,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startIdleTime: 0.8
+  playerController: {fileID: 352630880}
+  rotationSpeed: 5
+  interrogation: {fileID: 352630886}
+  targetTransform: {fileID: 352630888}
+--- !u!4 &1175402180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc1dff3518d4022439e1ccbaa2e81193,
+    type: 3}
+  m_PrefabInstance: {fileID: 1343946680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255818038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3171,7 +3245,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fc1dff3518d4022439e1ccbaa2e81193,
         type: 3}
       propertyPath: m_Name
-      value: squirrel
+      value: SquirrelDesk
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: fc1dff3518d4022439e1ccbaa2e81193,
         type: 3}
@@ -3999,6 +4073,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startIdleTime: 0.5
+  playerController: {fileID: 352630880}
+  rotationSpeed: 5
+  interrogation: {fileID: 352630886}
+  targetTransform: {fileID: 352630888}
+--- !u!4 &1559297210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e1db2910df73b314e98f0eb45256bba2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1056902932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1570595310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4752,7 +4836,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c84bf8a6122b81241b07eb697b6d3156,
         type: 3}
       propertyPath: m_Name
-      value: Hawkinfbx
+      value: OwlDesk
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c84bf8a6122b81241b07eb697b6d3156,
         type: 3}
@@ -5100,4 +5184,3 @@ SceneRoots:
   - {fileID: 1917584394}
   - {fileID: 2058838070}
   - {fileID: 1955185691}
-  - {fileID: 1135973981}

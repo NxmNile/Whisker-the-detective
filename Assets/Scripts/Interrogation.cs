@@ -52,6 +52,7 @@ public class Interrogation : MonoBehaviour
             index = 5;
         }
         interrogationUI[index].SetActive(true);
+        Debug.Log(objectName);
     }
 
     private void OnTriggerExit(Collider other)
