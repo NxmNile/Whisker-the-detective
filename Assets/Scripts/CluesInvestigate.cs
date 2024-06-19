@@ -226,7 +226,8 @@ public class CluesInvestigate : MonoBehaviour
         //-----------------------------------
     }
     private void OnTriggerExit(Collider other)
-    {
+    {   
+        Debug.Log("Exit : "+gameObjectName);
         isInObjectCollider = false;
         if (investigateUI != null)
         {
@@ -237,11 +238,7 @@ public class CluesInvestigate : MonoBehaviour
         {
             Guides[i].SetActive(false);
         }
-        else
-        {
-            
-        }
-        //Debug.Log(other.gameObject.name);
+        
     }
 
     public void closeDescription()
