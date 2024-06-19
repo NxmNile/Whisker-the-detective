@@ -13,9 +13,9 @@ public class Interrogation : MonoBehaviour
     public string objectName;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)&&IsInCollider)
+        if (Input.GetKeyDown(KeyCode.F)&&IsInCollider&&objectName!="StationDoor")
         {
-            cameraController.ChangeCamera(index+1);
+            cameraController.MoveCamera(index);
             playerController.moveSpeed = 0;
             playerController.IsTalking = true;
 
@@ -65,6 +65,6 @@ public class Interrogation : MonoBehaviour
     {
         playerController.moveSpeed = playerController.initialSpeed;
         playerController.IsTalking = false;
-        cameraController.ChangeCamera(0);
+        cameraController.MoveCameraBack();
     }
 }
