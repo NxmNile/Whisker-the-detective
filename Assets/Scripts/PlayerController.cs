@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
-    private float initialSpeed;
+    [SerializeField] public float moveSpeed = 5f;
+    public float initialSpeed;
+    public bool IsTalking = false;
     private Animator animator;
     private Rigidbody rb;
     void Start()
@@ -32,7 +33,12 @@ public class PlayerController : MonoBehaviour
 
         // Update animator parameter
         bool isMoving = moveHorizontal != 0 || moveVertical != 0;
-        animator.SetBool("IsWalk", isMoving);
+        if (!IsTalking)
+        {
+            animator.SetBool("IsWalk", isMoving);
+        }
+        
+           
     }
 
     private void OnCollisionEnter(Collision other)

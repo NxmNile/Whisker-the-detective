@@ -14,9 +14,10 @@ public class CameraController : MonoBehaviour
     private Camera[] allcamera;
     private void Start()
     {
-        MainCamera.enabled = true;
+        
         allcamera = new[] { MainCamera, RabbitCamera, OwlCamera, SquirrelCamera, BadgerCamera, PoliceCamera };
-        ChangeCamera(2);
+       
+        ChangeCamera(0);
     }
 
     public void ChangeCamera(int cameraNumber)
