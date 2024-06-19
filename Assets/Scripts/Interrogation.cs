@@ -8,9 +8,9 @@ public class Interrogation : MonoBehaviour
     [SerializeField] private GameObject[] interrogationUI;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private PlayerController playerController;
-    private int index;
+    public int index;
     private bool IsInCollider = false;
-
+    public string objectName;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F)&&IsInCollider)
@@ -25,7 +25,7 @@ public class Interrogation : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         IsInCollider = true;
-        string objectName;
+        
         objectName = other.gameObject.name;
         if (objectName == "RabbitDesk")
         {
