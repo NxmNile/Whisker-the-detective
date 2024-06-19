@@ -1369,10 +1369,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.21
+  m_Radius: 1.69
   m_Height: 5.36
   m_Direction: 1
-  m_Center: {x: 0, y: 2.03, z: 0.1}
+  m_Center: {x: 0, y: 2.03, z: 0.46}
 --- !u!65 &588637979
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1392,7 +1392,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.5, y: 4.23, z: 5.02}
+  m_Size: {x: 3.5, y: 4.23, z: 6.56}
   m_Center: {x: 0, y: 2.12, z: 0.18}
 --- !u!1001 &653521507
 PrefabInstance:

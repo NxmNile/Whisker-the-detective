@@ -59,4 +59,11 @@ public class Interrogation : MonoBehaviour
         IsInCollider = false;
         interrogationUI[index].SetActive(false);
     }
+
+    private void CloseDialog()
+    {
+        playerController.moveSpeed = playerController.initialSpeed;
+        playerController.IsTalking = false;
+        cameraController.ChangeCamera(0);
+    }
 }

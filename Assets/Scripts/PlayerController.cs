@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     }
     
     void Update()
-    {
+    {   
+        if (!IsTalking) {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical= Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical) * moveSpeed * Time.deltaTime;
@@ -33,9 +34,13 @@ public class PlayerController : MonoBehaviour
 
         // Update animator parameter
         bool isMoving = moveHorizontal != 0 || moveVertical != 0;
-        if (!IsTalking)
+       
+        animator.SetBool("IsWalk", isMoving);
+        }
+
+        if (IsTalking)
         {
-            animator.SetBool("IsWalk", isMoving);
+            animator.SetBool("IsWalk",false);
         }
         
            
