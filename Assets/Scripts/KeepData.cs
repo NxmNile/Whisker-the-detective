@@ -5,7 +5,9 @@ using UnityEngine;
 public class KeepData
 {   
     private static KeepData _instance;
-
+    public bool[] CluesList = new []{false,false,false,false,false,false,false,false};
+    public string sceneName ="";
+    public bool[] dialogList = new[] { false, false, false, false };
     public static KeepData Instance
     {
         get
@@ -18,8 +20,7 @@ public class KeepData
         }
     }
 
-    public bool[] CluesList = new []{false,false,false,false,false,false,false,false};
-    public string sceneName ="";
+    
 
     public bool CheckAllClues()
     {
@@ -32,6 +33,26 @@ public class KeepData
             }
         }
         if (count == 8)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool dialogCheck()
+    {
+        int count = 0;
+        for (int i = 0; i < dialogList.Length; i++)
+        {
+            if (dialogList[i] == true)
+            {
+                ++count;
+            }
+        }
+        if (count == 4)
         {
             return true;
         }

@@ -8,16 +8,54 @@ public class Interrogation : MonoBehaviour
     [SerializeField] private GameObject[] interrogationUI;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject Dialog;
+    [SerializeField] private DialogManager dialogManager;
+    private KeepData _keepData;
     public int index;
     private bool IsInCollider = false;
     public string objectName;
+
+    private void Start()
+    {
+        _keepData = KeepData.Instance;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F)&&IsInCollider&&objectName!="StationDoor")
-        {
+        {   
+            interrogationUI[index].SetActive(false);
+            Dialog.SetActive(true);
             cameraController.MoveCamera(index);
             playerController.moveSpeed = 0;
             playerController.IsTalking = true;
+            if (objectName == "RabbitDesk")
+            {
+                dialogManager.chooseDialog("RabbitDialog");
+            }
+            else if(objectName=="OwlDesk")
+            {
+                dialogManager.chooseDialog("OwlDialog");
+            }
+            else if (objectName == "SquirrelDesk")
+            {
+                dialogManager.chooseDialog("SquirrelDialog1");
+            }
+            else if (objectName == "BadgerDesk")
+            {
+                dialogManager.chooseDialog("BadgerDialog");
+            }
+            else if(objectName=="Police")
+            {
+                if (!_keepData.CheckAllClues())
+                {
+                    dialogManager.chooseDialog("PoliceDialog1");
+                }
+                else
+                {
+                    dialogManager.chooseDialog("PoliceDialog2");
+                }
+            }
 
         }
     }
@@ -66,5 +104,6 @@ public class Interrogation : MonoBehaviour
         playerController.moveSpeed = playerController.initialSpeed;
         playerController.IsTalking = false;
         cameraController.MoveCameraBack();
+        
     }
 }
