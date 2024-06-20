@@ -44,6 +44,8 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject CongratsScreen;
 
     [SerializeField] private RotateToTarget _toTarget;
+
+    [SerializeField] private GameObject Image;
     //[SerializeField] private CameraController _cameraController;
     private string[] dialogList;
     private int count = 0;
@@ -187,7 +189,7 @@ public class DialogManager : MonoBehaviour
             cameraController.MoveCamera(2);
             ClearDialogue();
             chooseDialog("SquirrelDialog2");
-            Invoke("Complete",5f);
+            Invoke("Complete",3f);
         }
         else
         {   
@@ -222,10 +224,16 @@ public class DialogManager : MonoBehaviour
 
     private void Winning()
     {
-        _toTarget.IsWining = true;
-        //_toTarget.RotateTowardsCamera();
+        Image.SetActive(true);
         ClearDialogue();
         chooseDialog("DetectiveDialog");
+        Invoke("LastScreen",2f);
+    }
+
+    private void LastScreen()
+    {   
+        this.gameObject.SetActive(false);
+        CongratsScreen.SetActive(true);
     }
     
     
