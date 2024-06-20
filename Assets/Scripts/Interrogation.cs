@@ -56,15 +56,15 @@ public class Interrogation : MonoBehaviour
             }
             else if(objectName=="Police")
             {
-                if (!_keepData.dialogCheck())
+                /*if (!_keepData.dialogCheck())
                 {
                     dialogManager.chooseDialog("PoliceDialog1");
                 }
                 else
                 {
                     dialogManager.chooseDialog("PoliceDialog2");
-                }
-                //dialogManager.chooseDialog("PoliceDialog2");
+                }*/
+                dialogManager.chooseDialog("PoliceDialog2");
             }
             
         }
@@ -114,7 +114,7 @@ public class Interrogation : MonoBehaviour
     }
 
     private void CloseDialog()
-    {
+    {   
         playerController.moveSpeed = playerController.initialSpeed;
         playerController.IsTalking = false;
         cameraController.MoveCameraBack();

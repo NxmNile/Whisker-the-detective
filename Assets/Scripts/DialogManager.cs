@@ -165,7 +165,10 @@ public class DialogManager : MonoBehaviour
     }
 
     public void CloseButton()
-    {
+    {   
+        NoButton.SetActive(false);
+        YesButton.SetActive(false);
+        Suspects.SetActive(false);
         this.gameObject.SetActive(false);
         playerController.moveSpeed = playerController.initialSpeed;
         playerController.IsTalking = false;
@@ -219,7 +222,8 @@ public class DialogManager : MonoBehaviour
 
     private void Winning()
     {
-        _toTarget.RotateTowardsCamera();
+        _toTarget.IsWining = true;
+        //_toTarget.RotateTowardsCamera();
         ClearDialogue();
         chooseDialog("DetectiveDialog");
     }
