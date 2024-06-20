@@ -62,6 +62,7 @@ public class CluesInvestigate : MonoBehaviour
             {
                 if (_keepData.CheckAllClues())
                 {
+                    _keepData.sceneName = "PoliceStation";
                     SceneManager.LoadScene("PoliceStation"); //unlock
                 }
                 else

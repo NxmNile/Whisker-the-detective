@@ -70,6 +70,7 @@ public class Interrogation : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F) && IsInCollider && objectName == "StationDoor")
         {
+            _keepData.sceneName = "WorldMain";
             SceneManager.LoadScene("World 2");
         }
     }
