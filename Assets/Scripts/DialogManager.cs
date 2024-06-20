@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     [SerializeField] private GameObject closeButton;
-    [SerializeField] private Button cButton;
+    
     [SerializeField] private TMP_Text dialogTxt;
-    [SerializeField] private Button nextButton;
-    [SerializeField] private GameObject button;
+   
+    [SerializeField] private GameObject NextButton;
     [SerializeField] private CameraController cameraController;
     [SerializeField] private PlayerController playerController;
 
@@ -25,12 +25,21 @@ public class DialogManager : MonoBehaviour
 
     [SerializeField] private string[] PoliceDialog1;
     [SerializeField] private string[] PoliceDialog2;
+    [SerializeField] private string[] PoliceDialog3;
+    [SerializeField] private string[] PoliceDialog4;
+    [SerializeField] private string[] PoliceDialog5;
+    [SerializeField] private GameObject YesButton;
+    [SerializeField] private GameObject NoButton;
 
+    [SerializeField] private GameObject RabbitButton;
+    [SerializeField] private GameObject OwlButton;
+    [SerializeField] private GameObject SquirrelButton;
+    [SerializeField] private GameObject BadgerButton;
     private string[] dialogList;
     private int count = 0;
     private bool isTyping = false;
     private bool dialogueFinished = false;
-
+    private string dialogName;
     private int dialogLength = 0;
     // Start is called before the first frame update
     
@@ -60,7 +69,17 @@ public class DialogManager : MonoBehaviour
             case "PoliceDialog2":
                 dialogList = PoliceDialog2;
                 break;
+            case "PoliceDialog3":
+                dialogList = PoliceDialog2;
+                break;
+            case "PoliceDialog4":
+                dialogList = PoliceDialog2;
+                break;
+            case "PoliceDialog5":
+                dialogList = PoliceDialog2;
+                break;
         }
+        dialogName = dialog;
         dialogLength = dialogList.Length;
         DisplayNextSentence();
     }
@@ -68,11 +87,10 @@ public class DialogManager : MonoBehaviour
     {
         ClearDialogue();
         StartCoroutine(typeSentence(dialogList[count]));
-
     }
     IEnumerator typeSentence(string sentence)
     {   
-        button.SetActive(false);
+        NextButton.SetActive(false);
         closeButton.SetActive(false);
         foreach (char letter in dialogList[count].ToCharArray())
         {
@@ -83,15 +101,22 @@ public class DialogManager : MonoBehaviour
         ++count;
         isTyping = false;
         dialogueFinished = true;
-        if (count<dialogLength-1)
+        if (count<dialogLength)
         {
-            button.SetActive(true);
+            NextButton.SetActive(true);
         }
         else 
         {
             closeButton.SetActive(true);
             count = 0;
         }
+
+        if (dialogName == "PoliceDialog2")
+        {
+            YesButton.SetActive(true);
+            NoButton.SetActive(true);
+        }
+        
     }
 
     public void CloseButton()
@@ -106,4 +131,29 @@ public class DialogManager : MonoBehaviour
     {
         dialogTxt.text = "";
     }
+
+    public void ChooseMurderer()
+    {
+        if (this.gameObject.name == "SquirrelButton")
+        {
+            Debug.Log("Yes");
+        }
+        else
+        {
+            Debug.Log("NO");
+        }
+    }
+
+    public void ReadyButton()
+    {
+        count = 0;
+        NextButton.SetActive(false);
+        closeButton.SetActive(false);
+        ClearDialogue();
+        RabbitButton.SetActive(true);
+        OwlButton.SetActive(true);
+        SquirrelButton.SetActive(true);
+        BadgerButton.SetActive(true);
+    }
+    
 }
