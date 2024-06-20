@@ -29,6 +29,8 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private string[] PoliceDialog3;
     [SerializeField] private string[] PoliceDialog4;
     [SerializeField] private string[] PoliceDialog5;
+    [SerializeField] private string[] DetectiveDialog;
+    
     [SerializeField] private GameObject YesButton;
     [SerializeField] private GameObject NoButton;
 
@@ -40,7 +42,8 @@ public class DialogManager : MonoBehaviour
 
     [SerializeField] private GameObject FailedScreen;
     [SerializeField] private GameObject CongratsScreen;
-    
+
+    [SerializeField] private RotateToTarget _toTarget;
     //[SerializeField] private CameraController _cameraController;
     private string[] dialogList;
     private int count = 0;
@@ -92,6 +95,9 @@ public class DialogManager : MonoBehaviour
             case "PoliceDialog5":
                 dialogList = PoliceDialog5;
                 break;
+            case "DetectiveDialog":
+                dialogList = DetectiveDialog;
+                break;
         }
         dialogName = dialog;
         dialogLength = dialogList.Length;
@@ -139,21 +145,22 @@ public class DialogManager : MonoBehaviour
         {
            Suspects.SetActive(true);
         }
-        else if (dialogName == "PoliceDialog4")
+        else if (dialogName == "PoliceDialog4")// incorrect answer
         {   
             closeButton.SetActive(false);
             Invoke("Failed",2f);
         }
-        else if (dialogName == "PoliceDialog5")
+        else if (dialogName == "PoliceDialog5")//correct answer
         {
             NextButton.SetActive(false);
             closeButton.SetActive(false);
+            Invoke("Winning",3f);
         }
-        else if(dialogName=="SquirrelDialog2")
+        else if(dialogName=="SquirrelDialog2") //confess
         {   
-           
             NextButton.SetActive(false);
             closeButton.SetActive(false);
+         
         }
     }
 
@@ -188,14 +195,13 @@ public class DialogManager : MonoBehaviour
 
     public void ReadyButton()
     {   
-        Debug.Log("REady");
+        //Debug.Log("REady");
         count = 0;
         ClearDialogue();
         NextButton.SetActive(false);
         closeButton.SetActive(false);
         YesButton.SetActive(false);
         NoButton.SetActive(false);
-        //Suspects.SetActive(true);
         chooseDialog("PoliceDialog3");
     }
 
@@ -207,8 +213,16 @@ public class DialogManager : MonoBehaviour
 
     private void Complete()
     {
-        cameraController.MoveCameraBack();
+        cameraController.MoveCamera(4);
         chooseDialog("PoliceDialog5");
     }
+
+    private void Winning()
+    {
+        _toTarget.RotateTowardsCamera();
+        ClearDialogue();
+        chooseDialog("DetectiveDialog");
+    }
+    
     
 }

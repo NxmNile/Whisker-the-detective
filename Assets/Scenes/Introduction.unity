@@ -482,7 +482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096291053
 Transform:
   m_ObjectHideFlags: 0
@@ -982,12 +982,11 @@ MonoBehaviour:
   DialogList:
   - 'Whisker : Hello?'
   - 'Police     : Hi, Detective.'
-  - '                 Do you remember Dr.Hootie Owl, an archaeologist ?'
+  - '                  Do you remember Dr.Hootie Owl, an archaeologist ?'
   - 'Whisker : Yes, Why?'
   - 'Police     : She was found dead in her room. We think she was murdered. '
   - '                  Are you available now? Please come here as fast as possible.'
   - 'Whisker : Roger that!'
-  - 
 --- !u!1 &1616626524
 GameObject:
   m_ObjectHideFlags: 0
