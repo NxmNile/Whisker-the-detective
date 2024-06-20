@@ -23,7 +23,7 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("OwlHouse");
         keepData.sceneName = "OwlHouse";
     }
-
+    
     public void TryAgain()
     {   
         keepData.CluesList = new []{false,false,false,false,false,false,false,false};
