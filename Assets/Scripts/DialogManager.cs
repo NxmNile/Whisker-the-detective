@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,18 +32,31 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject YesButton;
     [SerializeField] private GameObject NoButton;
 
-    [SerializeField] private GameObject RabbitButton;
-    [SerializeField] private GameObject OwlButton;
-    [SerializeField] private GameObject SquirrelButton;
-    [SerializeField] private GameObject BadgerButton;
+    [SerializeField] private GameObject Suspects;
+    [SerializeField] private Button RabbitButton;
+    [SerializeField] private Button OwlButton;
+    [SerializeField] private Button SquirrelButton;
+    [SerializeField] private Button BadgerButton;
+
+    [SerializeField] private GameObject FailedScreen;
+    [SerializeField] private GameObject CongratsScreen;
+    
+    //[SerializeField] private CameraController _cameraController;
     private string[] dialogList;
     private int count = 0;
     private bool isTyping = false;
     private bool dialogueFinished = false;
     private string dialogName;
     private int dialogLength = 0;
-    // Start is called before the first frame update
-    
+    private KeepData _keepData;
+    private void Start()
+    {
+        _keepData = KeepData.Instance;
+        RabbitButton.onClick.AddListener(()=>CheckMurderer(false));
+        OwlButton.onClick.AddListener(()=>CheckMurderer(false));
+        SquirrelButton.onClick.AddListener(()=>CheckMurderer(true));
+        BadgerButton.onClick.AddListener(()=>CheckMurderer(false));
+    }
 
     public void chooseDialog(string dialog)
     {
@@ -70,13 +84,13 @@ public class DialogManager : MonoBehaviour
                 dialogList = PoliceDialog2;
                 break;
             case "PoliceDialog3":
-                dialogList = PoliceDialog2;
+                dialogList = PoliceDialog3;
                 break;
             case "PoliceDialog4":
-                dialogList = PoliceDialog2;
+                dialogList = PoliceDialog4;
                 break;
             case "PoliceDialog5":
-                dialogList = PoliceDialog2;
+                dialogList = PoliceDialog5;
                 break;
         }
         dialogName = dialog;
@@ -89,7 +103,11 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(typeSentence(dialogList[count]));
     }
     IEnumerator typeSentence(string sentence)
-    {   
+    {
+        if (dialogName=="SquirrelDialog2")
+        {
+            Suspects.SetActive(false);
+        }
         NextButton.SetActive(false);
         closeButton.SetActive(false);
         foreach (char letter in dialogList[count].ToCharArray())
@@ -112,11 +130,31 @@ public class DialogManager : MonoBehaviour
         }
 
         if (dialogName == "PoliceDialog2")
-        {
+        {   
+            NextButton.SetActive(false);
             YesButton.SetActive(true);
             NoButton.SetActive(true);
         }
-        
+        else if (dialogName == "PoliceDialog3")
+        {
+           Suspects.SetActive(true);
+        }
+        else if (dialogName == "PoliceDialog4")
+        {   
+            closeButton.SetActive(false);
+            Invoke("Failed",2f);
+        }
+        else if (dialogName == "PoliceDialog5")
+        {
+            NextButton.SetActive(false);
+            closeButton.SetActive(false);
+        }
+        else if(dialogName=="SquirrelDialog2")
+        {   
+           
+            NextButton.SetActive(false);
+            closeButton.SetActive(false);
+        }
     }
 
     public void CloseButton()
@@ -132,28 +170,45 @@ public class DialogManager : MonoBehaviour
         dialogTxt.text = "";
     }
 
-    public void ChooseMurderer()
+    public void CheckMurderer(bool check)
     {
-        if (this.gameObject.name == "SquirrelButton")
-        {
-            Debug.Log("Yes");
+        if (check)
+        {   
+            cameraController.MoveCamera(2);
+            ClearDialogue();
+            chooseDialog("SquirrelDialog2");
+            Invoke("Complete",5f);
         }
         else
-        {
-            Debug.Log("NO");
+        {   
+            Suspects.SetActive(false);
+            chooseDialog("PoliceDialog4");
         }
     }
 
     public void ReadyButton()
-    {
+    {   
+        Debug.Log("REady");
         count = 0;
+        ClearDialogue();
         NextButton.SetActive(false);
         closeButton.SetActive(false);
-        ClearDialogue();
-        RabbitButton.SetActive(true);
-        OwlButton.SetActive(true);
-        SquirrelButton.SetActive(true);
-        BadgerButton.SetActive(true);
+        YesButton.SetActive(false);
+        NoButton.SetActive(false);
+        //Suspects.SetActive(true);
+        chooseDialog("PoliceDialog3");
+    }
+
+    private void Failed()
+    {   
+        FailedScreen.SetActive(true);
+        this.gameObject.SetActive(false);
+    }
+
+    private void Complete()
+    {
+        cameraController.MoveCameraBack();
+        chooseDialog("PoliceDialog5");
     }
     
 }

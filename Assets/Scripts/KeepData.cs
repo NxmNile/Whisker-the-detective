@@ -43,22 +43,25 @@ public class KeepData
     }
 
     public bool dialogCheck()
-    {
-        int count = 0;
+    {   
+        int check = 0;
         for (int i = 0; i < dialogList.Length; i++)
         {
             if (dialogList[i] == true)
             {
-                ++count;
+                ++check;
             }
         }
-        if (count == 4)
-        {
+        Debug.Log(check);
+        if (check == 4)
+        {   
             return true;
         }
         else
-        {
+        {   
             return false;
         }
+        
     }
+    
 }

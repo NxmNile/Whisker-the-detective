@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interrogation : MonoBehaviour
 {
@@ -32,22 +33,30 @@ public class Interrogation : MonoBehaviour
             if (objectName == "RabbitDesk")
             {
                 dialogManager.chooseDialog("RabbitDialog");
+                _keepData.dialogList[index] = true;
+                Debug.Log(_keepData.dialogList[index] );
             }
             else if(objectName=="OwlDesk")
             {
                 dialogManager.chooseDialog("OwlDialog");
+                _keepData.dialogList[index] = true;
+                Debug.Log(_keepData.dialogList[index] );
             }
             else if (objectName == "SquirrelDesk")
             {
                 dialogManager.chooseDialog("SquirrelDialog1");
+                _keepData.dialogList[index] = true;
+                Debug.Log(_keepData.dialogList[index] );
             }
             else if (objectName == "BadgerDesk")
-            {
+            {   
+                _keepData.dialogList[index] = true;
+                Debug.Log(_keepData.dialogList[index] );
                 dialogManager.chooseDialog("BadgerDialog");
             }
             else if(objectName=="Police")
             {
-                if (!_keepData.CheckAllClues())
+                if (!_keepData.dialogCheck())
                 {
                     dialogManager.chooseDialog("PoliceDialog1");
                 }
@@ -55,8 +64,13 @@ public class Interrogation : MonoBehaviour
                 {
                     dialogManager.chooseDialog("PoliceDialog2");
                 }
+                //dialogManager.chooseDialog("PoliceDialog2");
             }
-
+            
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && IsInCollider && objectName == "StationDoor")
+        {
+            SceneManager.LoadScene("World 2");
         }
     }
 
