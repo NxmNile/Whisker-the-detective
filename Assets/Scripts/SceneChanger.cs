@@ -28,7 +28,7 @@ public class SceneChanger : MonoBehaviour
     {   
         keepData.CluesList = new []{false,false,false,false,false,false,false,false};
         keepData.dialogList = new[] { false, false, false, false };
-        MainMenu();
+        IntroductionScene();
     }
 
     public void QuitGame()

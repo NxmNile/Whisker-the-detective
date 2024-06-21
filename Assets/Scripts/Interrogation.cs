@@ -56,15 +56,15 @@ public class Interrogation : MonoBehaviour
             }
             else if(objectName=="Police")
             {
-                /*if (!_keepData.dialogCheck())
+                if (!_keepData.dialogCheck())
                 {
                     dialogManager.chooseDialog("PoliceDialog1");
                 }
                 else
                 {
                     dialogManager.chooseDialog("PoliceDialog2");
-                }*/
-                dialogManager.chooseDialog("PoliceDialog2");
+                }
+                //dialogManager.chooseDialog("PoliceDialog2");
             }
             
         }
