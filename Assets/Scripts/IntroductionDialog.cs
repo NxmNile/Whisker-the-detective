@@ -16,9 +16,8 @@ public class IntroductionDialog : MonoBehaviour
     private int count = 0;
     private string sentences;
     private void Start()
-    {
-        sentences = DialogList[count];
-        StartCoroutine(typeSentence(sentences));
+    {   
+        SoundManager.instance.Play(SoundManager.SoundName.PhoneRing);
     }
 
     IEnumerator typeSentence(string sentence)
@@ -55,5 +54,12 @@ public class IntroductionDialog : MonoBehaviour
     private void ClearDialogue()
     {
         dialogTxt.text = "";
+    }
+
+    private void PickUpPhone()
+    {   
+        SoundManager.instance.Play(SoundManager.SoundName.PickUpPhone);
+        sentences = DialogList[count];
+        StartCoroutine(typeSentence(sentences));
     }
 }
