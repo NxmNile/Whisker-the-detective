@@ -214,6 +214,7 @@ public class DialogManager : MonoBehaviour
     {   
         FailedScreen.SetActive(true);
         this.gameObject.SetActive(false);
+        SoundManager.instance.Play(SoundManager.SoundName.Lose);
     }
 
     private void Complete()
@@ -228,12 +229,14 @@ public class DialogManager : MonoBehaviour
         ClearDialogue();
         chooseDialog("DetectiveDialog");
         Invoke("LastScreen",2f);
+        
     }
 
     private void LastScreen()
     {   
         this.gameObject.SetActive(false);
         CongratsScreen.SetActive(true);
+        SoundManager.instance.Play(SoundManager.SoundName.Win);
     }
     
     

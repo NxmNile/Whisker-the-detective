@@ -71,6 +71,8 @@ public class Interrogation : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.F) && IsInCollider && objectName == "StationDoor")
         {
             _keepData.sceneName = "WorldMain";
+            SoundManager.instance.Stop(SoundManager.SoundName.BGM);
+            SoundManager.instance.Play(SoundManager.SoundName.BGM2);
             SceneManager.LoadScene("World 2");
         }
     }

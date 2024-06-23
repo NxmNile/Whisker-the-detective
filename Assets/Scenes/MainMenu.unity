@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 449484735}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: SoundManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,6 +905,130 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594441815}
   m_CullTransparentMesh: 1
+--- !u!1 &1727653377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727653379}
+  - component: {fileID: 1727653378}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1727653378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727653377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e873c36631878ff468d1cae2f3e8bcee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1727653379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727653377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.4625, z: 2.1959445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1749410020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1749410022}
+  - component: {fileID: 1749410021}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1749410021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749410020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8509a4210a93eab4593252e81de74cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: 0
+    clip: {fileID: 8300000, guid: 773fb8f3ec9672642b11a30868ba42c3, type: 3}
+    volume: 0.6
+    loop: 1
+    audioSource: {fileID: 0}
+  - soundName: 2
+    clip: {fileID: 8300000, guid: 419afb83aa91ea74793a671d2eca5dbf, type: 3}
+    volume: 0.59
+    loop: 0
+    audioSource: {fileID: 0}
+  - soundName: 3
+    clip: {fileID: 8300000, guid: 03cab4d74d8558d4bbc2fc19ad59f2e8, type: 3}
+    volume: 0.557
+    loop: 0
+    audioSource: {fileID: 0}
+  - soundName: 4
+    clip: {fileID: 8300000, guid: 013b22bacab884c428b24192bb23b891, type: 3}
+    volume: 0.579
+    loop: 0
+    audioSource: {fileID: 0}
+  - soundName: 5
+    clip: {fileID: 8300000, guid: b83bedda40d16014398c53a8a6e7cf86, type: 3}
+    volume: 0.585
+    loop: 0
+    audioSource: {fileID: 0}
+  - soundName: 6
+    clip: {fileID: 8300000, guid: 0359a0789c635df43b32848f6e76d8c7, type: 3}
+    volume: 0.645
+    loop: 0
+    audioSource: {fileID: 0}
+  - soundName: 1
+    clip: {fileID: 8300000, guid: c256f8785afeb7846b6e20cff8ce9794, type: 3}
+    volume: 0.59
+    loop: 1
+    audioSource: {fileID: 0}
+--- !u!4 &1749410022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749410020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1799930147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,3 +1247,5 @@ SceneRoots:
   - {fileID: 1022317955}
   - {fileID: 1799930150}
   - {fileID: 449484734}
+  - {fileID: 1749410022}
+  - {fileID: 1727653379}

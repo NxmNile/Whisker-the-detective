@@ -13,13 +13,16 @@ public class SceneChanger : MonoBehaviour
        
     }
     public void MainMenu()
-    {   
+    {
+        SoundManager.instance.Stop(SoundManager.SoundName.BGM);
         keepData.sceneName = "Introduction";
         SceneManager.LoadScene("Introduction");
     }
 
     public void IntroductionScene()
-    {
+    {   
+        SoundManager.instance.Stop(SoundManager.SoundName.BGM2);
+        SoundManager.instance.Play(SoundManager.SoundName.BGM);
         SceneManager.LoadScene("OwlHouse");
         keepData.sceneName = "OwlHouse";
     }

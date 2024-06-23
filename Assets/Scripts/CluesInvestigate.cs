@@ -56,6 +56,8 @@ public class CluesInvestigate : MonoBehaviour
             if (gameObjectName == "HouseDoor")
             {
                 _keepData.sceneName = "OwlHouse";
+                SoundManager.instance.Stop(SoundManager.SoundName.BGM2);
+                SoundManager.instance.Play(SoundManager.SoundName.BGM);
                 SceneManager.LoadScene("OwlHouse");
             }
             else if (gameObjectName == "PoliceStt")
@@ -63,6 +65,8 @@ public class CluesInvestigate : MonoBehaviour
                 if (_keepData.CheckAllClues())
                 {
                     _keepData.sceneName = "PoliceStation";
+                    SoundManager.instance.Stop(SoundManager.SoundName.BGM2);
+                    SoundManager.instance.Play(SoundManager.SoundName.BGM);
                     SceneManager.LoadScene("PoliceStation"); //unlock
                 }
                 else
@@ -76,6 +80,7 @@ public class CluesInvestigate : MonoBehaviour
             }
             else if(gameObjectName == "mainFoot")
             {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 DescriptionUI.SetActive(true);
                 DesImage.SetActive(true);
                 descriptionTxt.text = "Muddy footprints near the shattered window match Maxie Badger's footprint";
@@ -84,7 +89,8 @@ public class CluesInvestigate : MonoBehaviour
                 _keepData.CluesList[0] = true;
             }
             else if (gameObjectName == "CCTV")
-            {
+            {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 DescriptionUI.SetActive(true);
                 DesImage.SetActive(true);
                 descriptionTxt.text = "Security Camera Footage: Showing Bunny Alice entering the house late at night";
@@ -96,13 +102,15 @@ public class CluesInvestigate : MonoBehaviour
             //----------Owl House-------------------
             if (gameObjectName == "glass5")
             {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 DescriptionUI.SetActive(true);
                 descriptionTxt.text = "A shattered window suggesting a possible break-in.";
                 Time.timeScale = 0;
                 _keepData.CluesList[2] = true;
             }
             else if(gameObjectName=="letter")
-            {
+            {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 BGPanel.SetActive(true);
                 DescriptionUI.SetActive(true);
                 cluesImage[4].SetActive(true);
@@ -112,7 +120,8 @@ public class CluesInvestigate : MonoBehaviour
                 _keepData.CluesList[3] = true;
             }
             else if (gameObjectName == "WEAPON")
-            {
+            {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 BGPanel.SetActive(true);
                 DescriptionUI.SetActive(true);
                 cluesImage[3].SetActive(true);
@@ -124,6 +133,7 @@ public class CluesInvestigate : MonoBehaviour
             }
             else if (gameObjectName == "phone")
             {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 BGPanel.SetActive(true);
                 DescriptionUI.SetActive(true);
                 cluesImage[2].SetActive(true);
@@ -135,6 +145,7 @@ public class CluesInvestigate : MonoBehaviour
             }
             else if (gameObjectName == "diary")
             {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 BGPanel.SetActive(true);
                 cluesImage[0].SetActive(true);
                 DescriptionUI.SetActive(true);
@@ -145,6 +156,7 @@ public class CluesInvestigate : MonoBehaviour
             }
             else if(gameObjectName=="bankRecord")
             {   
+                SoundManager.instance.Play(SoundManager.SoundName.CorrectSmt);
                 BGPanel.SetActive(true);
                 cluesImage[1].SetActive(true);
                 y = 1;
@@ -157,6 +169,8 @@ public class CluesInvestigate : MonoBehaviour
             else if (gameObjectName=="Door")
             {
                 _keepData.sceneName = "WorldMain";
+                SoundManager.instance.Stop(SoundManager.SoundName.BGM);
+                SoundManager.instance.Play(SoundManager.SoundName.BGM2);
                 SceneManager.LoadScene("World 1");
             }
             ///////////////////////////////////////
