@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.SceneManagement;
-using UnityEditorInternal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
